@@ -2,7 +2,7 @@ import "dotenv/config";
 import express, {  NextFunction, Request, Response } from "express";
 import { connect_DB } from "./config/db.config";
 import CustomError, { errorHandler } from './middlewares/error_handler.middleware'
-import cookieParser  from 'cookie-Parser'
+import cookieParser  from 'cookie-parser'
 
 //? importing routes
 import authRoutes from './routes/auth.routes'
