@@ -1,7 +1,6 @@
 
 import jwt,{JwtPayload} from "jsonwebtoken"
 
-import { Role } from '../@types/enum.types'
 import { Iplayload } from '../@types/interface.types';
 import { jwt_config } from '../config/config';
 

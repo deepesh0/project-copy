@@ -14,7 +14,7 @@ const wishLisstSchema = new mongoose_1.default.Schema({
     product: {
         type: mongoose_1.default.Schema.Types.ObjectId,
         ref: 'prodct',
-        required: [true, 'User is required']
+        required: [true, 'product is required']
     }
 }, { timestamps: true });
 const WishList = mongoose_1.default.model('wishlist', wishLisstSchema);

@@ -11,7 +11,7 @@ const wishLisstSchema = new mongoose.Schema({
        product:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'prodct',
-        required:[true,'User is required']
+        required:[true,'product is required']
     }
 
 },{timestamps:true})

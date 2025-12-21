@@ -3,7 +3,7 @@ import express, {  NextFunction, Request, Response } from "express";
 import { connect_DB } from "./config/db.config";
 import CustomError, { errorHandler } from './middlewares/error_handler.middleware'
 import cookieParser  from 'cookie-parser'
-
+import cors from 'cors'
 //? importing routes
 import authRoutes from './routes/auth.routes'
 import categoryRoutes from './routes/category.routes'
@@ -23,6 +23,9 @@ connect_DB();
 
 
 //* using miidleware
+app.use(cors({
+  origin: '*'
+}));
 app.use(cookieParser())
 app.use(express.json({limit:'5mb'}))
 app.use('/api/uploads',express.static('uploads/'))

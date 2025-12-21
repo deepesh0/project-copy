@@ -41,6 +41,7 @@ const express_1 = __importDefault(require("express"));
 const db_config_1 = require("./config/db.config");
 const error_handler_middleware_1 = __importStar(require("./middlewares/error_handler.middleware"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const cors_1 = __importDefault(require("cors"));
 //? importing routes
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const category_routes_1 = __importDefault(require("./routes/category.routes"));
@@ -53,6 +54,9 @@ const app = (0, express_1.default)();
 //* connect database
 (0, db_config_1.connect_DB)();
 //* using miidleware
+app.use((0, cors_1.default)({
+    origin: '*'
+}));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json({ limit: '5mb' }));
 app.use('/api/uploads', express_1.default.static('uploads/'));

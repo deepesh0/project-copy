@@ -24,10 +24,10 @@ exports.register = (0, asynchandler_utils_1.asyncHandler)(async (req, res, next)
     user.password = hashedPass;
     //! image
     if (file) {
-        const { path, public_id } = await (0, cloudinary_utils_1.upload)(file?.path, '/profile_images');
+        const { path, public_id } = await (0, cloudinary_utils_1.upload)(file?.path, "/profile_images");
         user.profile_image = {
             path,
-            public_id
+            public_id,
         };
     }
     //! save user
@@ -55,7 +55,7 @@ exports.login = (0, asynchandler_utils_1.asyncHandler)(async (req, res, next) =>
         throw new error_handler_middleware_1.default("email or password does not match", 400);
     }
     //* compare password
-    const isPassMatch = await (0, bcrypt_utils_1.comparePassword)(password, user?.password || "");
+    const isPassMatch = await (0, bcrypt_utils_1.comparePassword)(password, user?.password || '');
     if (!isPassMatch) {
         throw new error_handler_middleware_1.default("email or password does not match", 400);
     }
@@ -69,21 +69,22 @@ exports.login = (0, asynchandler_utils_1.asyncHandler)(async (req, res, next) =>
     });
     await (0, nodemailer_utils_1.sendEmail)({
         html: "<h1>Login Succesfull</h1>",
-        subject: 'Login to account',
-        to: user?.email || ''
+        subject: "Login to account",
+        to: user?.email || "",
     });
     res
-        .cookie('access_token', access_token, {
-        sameSite: 'none',
+        .cookie("access_token", access_token, {
+        sameSite: "none",
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'development' ? false : true,
-        maxAge: Number(process.env.COOKIE_EXPIRES_IN || '7') * 24 * 60 * 60 * 1000
+        secure: process.env.NODE_ENV === "development" ? false : true,
+        maxAge: Number(process.env.COOKIE_EXPIRES_IN || "7") * 24 * 60 * 60 * 1000,
     })
-        .status(201).json({
+        .status(201)
+        .json({
         message: "Login successfull",
         status: "success",
         data: user,
-        access_token
+        access_token,
     });
 });
 // change pass
