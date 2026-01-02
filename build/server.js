@@ -55,7 +55,8 @@ const app = (0, express_1.default)();
 (0, db_config_1.connect_DB)();
 //* using miidleware
 app.use((0, cors_1.default)({
-    origin: '*'
+    origin: 'http://localhost:5173/',
+    credentials: true
 }));
 app.use((0, cookie_parser_1.default)());
 app.use(express_1.default.json({ limit: '5mb' }));
