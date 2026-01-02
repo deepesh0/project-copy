@@ -7,6 +7,7 @@ exports.connect_DB = void 0;
 const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = require("./config");
 const connect_DB = () => {
+    console.log(config_1.db_config.db_uri);
     mongoose_1.default
         .connect(config_1.db_config.db_uri, {
         dbName: config_1.db_config.db_name,

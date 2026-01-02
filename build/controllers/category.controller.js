@@ -11,6 +11,7 @@ const cloudinary_utils_1 = require("../utils/cloudinary.utils");
 const dir = "/categories";
 exports.getAll = (0, asynchandler_utils_1.asyncHandler)(async (req, res) => {
     const categories = await category_model_1.default.find({});
+    console.log(categories);
     res.status(200).json({
         message: "Category fetched",
         status: "success",

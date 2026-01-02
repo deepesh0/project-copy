@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login = exports.register = void 0;
+exports.me = exports.login = exports.register = void 0;
 const user_model_1 = __importDefault(require("../models/user.model"));
 const bcrypt_utils_1 = require("../utils/bcrypt.utils");
 const error_handler_middleware_1 = __importDefault(require("../middlewares/error_handler.middleware"));
@@ -91,3 +91,11 @@ exports.login = (0, asynchandler_utils_1.asyncHandler)(async (req, res, next) =>
 // const changePassword = asyncHandler(async (req:Request,res:Response) => {
 //     // api logic
 // })
+exports.me = (0, asynchandler_utils_1.asyncHandler)(async (req, res) => {
+    const id = req.user?._id;
+    const user = await user_model_1.default.findOne({ _id: id });
+    res.status(200).json({
+        data: user,
+        message: 'Profile fetched'
+    });
+});
