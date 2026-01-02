@@ -7,7 +7,7 @@ import { deletefile, upload } from "../utils/cloudinary.utils";
 const dir = "/categories";
 export const getAll = asyncHandler(async (req: Request, res: Response) => {
   const categories = await Category.find({});
-
+  console.log(categories)
   res.status(200).json({
     message: "Category fetched",
     status: "success",

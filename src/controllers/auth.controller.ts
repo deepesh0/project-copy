@@ -110,3 +110,12 @@ export const login = asyncHandler(
 // const changePassword = asyncHandler(async (req:Request,res:Response) => {
 //     // api logic
 // })
+
+export const me = asyncHandler(async(req:Request, res:Response)=>{
+  const id= req.user?._id
+  const user = await User.findOne({_id:id})
+  res.status(200).json({
+    data:user,
+    message:'Profile fetched'
+  })
+})

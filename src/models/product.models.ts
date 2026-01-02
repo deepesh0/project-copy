@@ -23,7 +23,7 @@ export const ProductSchema = new mongoose.Schema(
       trim: true,
     },
     cover_image: {
-      required: [true, "Description is required"],
+      required: [true, "cover image is required"],
       type: {
         path: {
           type: String,

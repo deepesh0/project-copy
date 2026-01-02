@@ -47,7 +47,6 @@ export const authenticate = (roles?:Role[]) => {
       }
       if(roles && roles.length > 0 && !roles.includes(user.role)){
         throw new CustomError("Forbidden. Access Denied",403);
-        
       }
       req.user = {
         _id: user._id,

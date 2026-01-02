@@ -7,9 +7,6 @@ import CustomError from "../middlewares/error_handler.middleware";
 import WishList from "../models/wishlist.model";
 
 
-
-
-
 export const create = asyncHandler(async (req: Request, res: Response) => {
   const { product_id } = req.body;
   const user_id = req.user?._id
@@ -47,7 +44,6 @@ export const clearAll = asyncHandler(async (req:Request, res:Response) => {
     data: null,
     status: "success",
       })
-
 })
 
 
